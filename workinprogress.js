@@ -139,7 +139,6 @@ window.addEventListener("DOMContentLoaded", function () {
           trigger: ".container.last-slider",
           start: "0% 60%",
           end: "85% 75%",
-          //markers: true,
           onEnter: () => tlTrusted.play(),
         onLeaveBack: () => tlTrusted.reverse(),
         },
