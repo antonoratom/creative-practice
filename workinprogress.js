@@ -102,20 +102,56 @@ window.addEventListener("DOMContentLoaded", function () {
       let tlLimit = gsap.timeline({
         scrollTrigger: {
           trigger: ".container.limitless-pos",
-          start: "15% 50%",
+          start: "-15% 50%",
           end: "85% 50%",
-          markers: true,
+          //markers: true,
+          onEnter: () => tlLimit.play(),
+        onLeaveBack: () => tlLimit.reverse(),
         },
       });
-      tlLimit.from($(this).find("[letters-slide-down] .word"), {
-        xPercent: -110,
-        opacity: 0.4,
-        duration: 0.6,
+      tlLimit.from($(this).find("[words-slide-up] .word"), {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
         ease: "power1.out",
-        //markers: true,
-        stagger: { amount: 1, each: 0.2 },
+        stagger:  0.05,
       });
       tlLimit.fromTo(
+        $(this).find(".bento-bl"),
+        {
+          yPercent: 10,
+          opacity: 0,
+        },
+        {
+          yPercent: 0,
+          opacity: 1,
+          duration: 0.5,
+          ease: "power1.out",
+          stagger: { amount: 1, each: 0.1 },
+        },
+      );
+    });
+
+    // Trusted by possibiility
+    $(".container.last-slider").each(function (index) {
+      let tlTrusted = gsap.timeline({
+        scrollTrigger: {
+          trigger: ".container.last-slider",
+          start: "0% 60%",
+          end: "85% 75%",
+          //markers: true,
+          onEnter: () => tlTrusted.play(),
+        onLeaveBack: () => tlTrusted.reverse(),
+        },
+      });
+      tlTrusted.from($(this).find("[words-slide-up] .word"), {
+        yPercent: 100,
+        opacity: 0,
+        duration: 0.4,
+        ease: "power1.out",
+        stagger:  0.05,
+      });
+      tlTrusted.fromTo(
         $(this).find(".bento-bl"),
         {
           yPercent: 10,
